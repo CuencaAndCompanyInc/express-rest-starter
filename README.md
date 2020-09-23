@@ -1,3 +1,6 @@
+![https://travis-ci.org/abrahamcuenca/express-REST-starter.svg?branch=master](https://travis-ci.org/abrahamcuenca/express-REST-starter.svg?branch=master)
+[![codecov](https://codecov.io/gh/abrahamcuenca/express-REST-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/abrahamcuenca/express-REST-starter)
+
 # Express REST Starter
 
 This project starter includes everything you need to get up and running
