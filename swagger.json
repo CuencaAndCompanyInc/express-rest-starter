@@ -99,7 +99,7 @@
                     "maxLength": 72,
                     "example": "password123!"
                   },
-                  "email": {
+                  "emailAddress": {
                     "type": "string",
                     "required": true,
                     "maxLength": 254,
@@ -247,7 +247,7 @@
             "required": true,
             "example": "alice"
           },
-          "email": {
+          "emailAddress": {
             "type": "string",
             "required": true,
             "example": "alice@example.com"
