@@ -22,12 +22,15 @@
   "homepage": "https://github.com/abrahamcuenca/express-REST-starter#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm test",
-      "pre-push": "npm test"
+      "pre-commit": "lint-staged && npm test"
     }
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*.js": [
+      "prettier --write --ignore-unknown",
+      "git add",
+      "jest --bail --findRelatedTests"
+    ]
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
