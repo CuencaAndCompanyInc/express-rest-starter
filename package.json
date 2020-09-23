@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/abrahamcuenca/express-REST-starter#readme",
   "husky": {
-    "pre-commit": "lint-staged && npm test",
-    "pre-push": "npm test"
+    "hooks": {
+      "pre-commit": "lint-staged && npm test",
+      "pre-push": "npm test"
+    }
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
