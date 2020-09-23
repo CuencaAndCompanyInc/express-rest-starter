@@ -1,10 +1,10 @@
 # Express REST Starter
 
 This project starter includes everything you need to get up and running
-with a quick REST backend. 
-
+with a quick REST backend.
 
 ## Features
+
 - MongoDB
 - local Authentication and JWT Authentication
 - REST api is documented with Swagger (json format)
@@ -14,7 +14,7 @@ with a quick REST backend.
 - Heroku integration
 
 > setup your .env with your local dev environment.  
-> for production setup environment variables through heroku
+> for production setup environment variables in travis and heroku
 
 ## Installation
 
@@ -26,16 +26,17 @@ with a quick REST backend.
 - `JWT_SECRET`: defaults to `S3cr3t!`
 - `JWT_EXPIRY`: defaults to `7d`
 
-3. Update `.travis.yml` 
+3. Update `.travis.yml`
 4. Add your models, routes and secure your endpoint
-by passing `jwtAuth` middleware
+   by passing `jwtAuth` middleware
 
 ### Travis CI, Heroku setup
+
 1. sign up for an account at the [TravisCI](https://travis-ci.org/) website
-2. login to Travis and go to your account [repositories page](https://travis-ci.org/account/repositories) 
-and switch your repo to 'on'
-3. install [Travis CI CLI](https://github.com/travis-ci/travis.rb) 
-and install [Heroku CLI](https://heroku.com)
+2. login to Travis and go to your account [repositories page](https://travis-ci.org/account/repositories)
+   and switch your repo to 'on'
+3. install [Travis CI CLI](https://github.com/travis-ci/travis.rb)
+   and install [Heroku CLI](https://heroku.com)
 4. Login and integrate with Heroku by running `travis login` and supply github username/password
 5. run `travis setup heroku`
 6. run `heroku create`
