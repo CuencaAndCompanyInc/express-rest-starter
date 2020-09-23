@@ -29,9 +29,14 @@ with a quick REST backend.
 - `JWT_SECRET`: defaults to `S3cr3t!`
 - `JWT_EXPIRY`: defaults to `7d`
 
-3. Update `.travis.yml`
+3. Update `.travis.yml` per instructions below (Travis CI, Heroku setup)
 4. Add your models, routes and secure your endpoint
    by passing `jwtAuth` middleware
+   example: 
+   ```javascript
+   app.get('/my-protected-endpoint', jwtAuth, (req, res) => {...});
+   ```
+   
 
 ### Travis CI, Heroku setup
 
