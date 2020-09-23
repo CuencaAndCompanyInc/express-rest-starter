@@ -1,0 +1,282 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Express REST starter",
+    "description": "This is the api documentation for the express rest starter. Update this with your API information.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api/v1",
+      "description": "api server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "user operations"
+    },
+    {
+      "name": "auth",
+      "description": "authentication and authorization operations"
+    }
+  ],
+  "paths": {
+    "/protected": {
+      "get": {
+        "security": [{
+          "bearerAuth": []
+        }],
+        "summary": "Retrieve data from a protected endpoint",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "Hello, World!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized request"
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Check the  status of the API service",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "OK"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Create a new user",
+        "tags": ["user"],
+        "description": "",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "required": true,
+                    "minLength": 1,
+                    "example": "alice"
+                  },
+                  "password": {
+                    "type": "string",
+                    "required": true,
+                    "minLength": 10,
+                    "maxLength": 72,
+                    "example": "password123!"
+                  },
+                  "email": {
+                    "type": "string",
+                    "required": true,
+                    "maxLength": 254,
+                    "example": "alice@example.com"
+                  },
+                  "firstName": {
+                    "type": "string",
+                    "example": "Alice"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "example": "Alison"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/validationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Exchange credentials for an auth token",
+        "tags": ["auth"],
+        "description": "",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "alice"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "password123456789"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/authToken"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "no credentials or invalid credentials supplied"
+          }
+        }
+      }
+    },
+    "/auth/refresh": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Exchange a valid auth token for a new token with a later expiry date",
+        "tags": ["auth"],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/authToken"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "missing, invalid or expired auth token provided"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "validationError": {
+        "description": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "example": "422"
+          },
+          "reason": {
+            "type": "string",
+            "example": "ValidationError"
+          },
+          "message": {
+            "type": "string",
+            "example": "Missing field"
+          },
+          "location": {
+            "type": "string",
+            "example": "username"
+          }
+        }
+      }
+    },
+    "schemas": {
+      "User": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "required": true,
+            "example": "alice"
+          },
+          "email": {
+            "type": "string",
+            "required": true,
+            "example": "alice@example.com"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "Alice"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Alison"
+          }
+        }
+      },
+      "authToken": {
+        "properties": {
+          "authToken": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxpY2UiLCJmaXJzdE5hbWUiOiIiLCJsYXN0TmFtZSI6IiIsImVtYWlsQWRkcmVzcyI6ImFsaWNlQGV4YW1wbGUuY29tIn0sImlhdCI6MTYwMDgyNzIyMCwiZXhwIjoxNjAxNDMyMDIwLCJzdWIiOiJhbGljZSJ9.vGhWdzjda__8rgInQmEPV6BYtKfk8rjW2M8wo8oPmIY"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
