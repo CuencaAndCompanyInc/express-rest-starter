@@ -1,0 +1,60 @@
+{
+  "name": "express-REST-starter",
+  "version": "1.0.0",
+  "description": "Express REST starter project with local and JWT auth, swagger, and mongodb",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "npm run prod",
+    "prod": "cross-env NODE_ENV=production node src/server.js",
+    "dev": "cross-env NODE_ENV=development DEBUG=express nodemon",
+    "test": "cross-env NODE_ENV=test jest --coverage --runInBand --no-cache --ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abrahamcuenca/express-REST-starter.git"
+  },
+  "keywords": [],
+  "author": "Abraham Cuenca <websiteprojectmanager@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abrahamcuenca/express-REST-starter/issues"
+  },
+  "homepage": "https://github.com/abrahamcuenca/express-REST-starter#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "prettier --write --ignore-unknown",
+      "git add",
+      "jest --bail --findRelatedTests"
+    ]
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.3",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "ramda": "^0.27.1",
+    "swagger-ui-express": "^4.1.4"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "faker": "^5.1.0",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "lint-staged": "^10.4.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.2",
+    "supertest": "^4.0.2"
+  }
+}

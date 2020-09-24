@@ -1,0 +1,12 @@
+language: node_js
+node_js: node
+services:
+  - mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: Ay+AH59kMr96Z0ZUwFtxqF6mY778gvIId+Cn6ywnu0uDEpWZUauPXAmdT/DpE67CQ96b5ySTmV4sXT3NWWoYDmWwTYs0k5Ll9LxBwIx0VSrgnyINxc33OeVXC5A3JB1cj8lUD7FCzF+f9qLG0Q/r+RBnBkX48peBCN738G7wo0e0HPblGDDOJLFppI2UFt3uyWTgkvim3t2RLK/0AMZsy/4cRGQbeFXcCZDrtsM7MgUcY1b98aT7sJyRg1+TYep2rKc5eDXGQlGyDR1i4mc0GCA/alzzw51j4VeCKNcuQU20iptF/4s0rbxb1ZPFG9NHc/p2JdNexlKc/Ni9x9qbmvNVikhRjm8BZQNHbbgo+Qfy6m8b7ZOtyD1fvjhuSAYxuORgGAYq2Apd8WCOy9U1XJkF3NL/kDJp5R9qqwM97oqOaVFQi5i0cSIuLyn5dLGNGtEmrciqd/w+iFsapJOkcyIBtmUgrkb7hhdLEozYl6on7Ah8ZtrnPrA/x93H3AmP1E82jUumrXU7TSVMA6izDxJsoDRMKgC0WDacTXHClb+5PawOd34vnON7XxXZt2Ymh0tAT+tQCEM4TP0RPVdKXvfa9UvfrogyPwd+8hAeXryI1ntrGfjZYDyFeCM2rjpYyYN3pJcuoESyoPt+mdM4tZSn0+1ScQyJ2VmEjiKGrVk=
+  app: express-REST-starter
+  on:
+    repo: abrahamcuenca/express-REST-starter
+  skip_cleanup: 'true'
