@@ -72,11 +72,6 @@
     },
     "/users": {
       "post": {
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "summary": "Create a new user",
         "tags": ["user"],
         "description": "",
